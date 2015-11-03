@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var simpleLabel: UILabel!
     
@@ -16,6 +16,24 @@ class ViewController: UIViewController {
     
     @IBAction func changeLabel(sender: AnyObject) {
         simpleLabel.text = "Hello, " + simpleTextField.text! + "!"
+        
+        // Make keyboard go away
+        // Fist way to close
+        self.simpleTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // Build in method, we can chose to use it to implement to lifecycle.
+        
+        // Now we could go ahead and call all of them one by one, but this is a way of telling all the controls contained on the screen that they are no longer in edit mode and they will give up first responder status.
+        
+        // Second way to close
+        self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
