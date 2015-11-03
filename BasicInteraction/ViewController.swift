@@ -10,6 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var simpleLabel: UILabel!
+    
+    @IBOutlet weak var simpleTextField: UITextField!
+    
+    @IBAction func changeLabel(sender: AnyObject) {
+        simpleLabel.text = "Hello, " + simpleTextField.text! + "!"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
